@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style_admin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="fas fa-hand-holding-heart"></i>
+                <div class="logo_name">AdminPanel</div>
+            </div>
+        </div>
+        <div class="profile_content">
+            <div class="profile">
+                {% if profile.profilepic and profile.profilepic.url %}
+                <img src="{{profile.profilepic.url}}" width="80" height="80" alt="Profile Picture" />
+                {% else %}
+                <img src="{% static 'images/defaultprofile.webp' %}" width="80" height="80" alt="Default Profile" />
+                {% endif %}
+                <div class="profile_details">
+                    <div class="name">Admin User</div>
+                    <div class="email">admin@gmail.com</div>
+                </div>
+            </div>
+        </div>
+        <ul class="nav_list">
+            <li><a href="{% url 'index_admin'%}" class="active"><i class="fas fa-th-large"></i><span
+                        class="links_name">Dashboard</span></a></li>
+            <li>
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-users"></i><span class="links_name">Donation</span>
+                    <i class="down-arrow fas fa-angle-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="{% url 'pendingdonation' %}" class="dropdown-item">New Donation Request</a>
+                    <a href="{% url 'accepteddonation' %}" class="dropdown-item">Accepted Donation</a>
+                    <a href="{% url 'rejected_donation' %}" class="dropdown-item">Rejected Donation</a>
+                    <a href="{% url 'donationrec_admin' %}" class="dropdown-item">Donation Received</a>
+                    <a href="{% url 'donationnotrec_admin' %}" class="dropdown-item">Donation Not Received</a>
+                    <a href="{% url 'donationgivenad' %}" class="dropdown-item">Donation Given</a>
+                    <a href="{% url 'alldonations' %}" class="dropdown-item">All Donations</a>
+                </div>
+            </li>
+            <li><a href="{% url 'managedonor' %}"><i class="fas fa-info-circle"></i><span class="links_name">Manage
+                        Donor</span></a></li>
+            <li>
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-users"></i><span class="links_name">Volunteer</span>
+                    <i class="down-arrow fas fa-angle-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="{% url 'new_volunteer' %}" class="dropdown-item">New Volunteer Request</a>
+                    <a href="{% url 'accvolunteer' %}" class="dropdown-item">Accepted Volunteer</a>
+                    <a href="{% url 'rejected_volunteer' %}" class="dropdown-item">Rejected Volunteer</a>
+                    <a href="{% url 'all_volunteers' %}" class="dropdown-item">All Volunteers</a>
+
+                </div>
+            </li>
+            <li>
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-map"></i><span class="links_name">Area</span>
+                    <i class="down-arrow fas fa-angle-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="{% url 'addarea' %}" class="dropdown-item">Add Donation Area</a>
+                    <a href="{% url 'managearea' %}" class="dropdown-item">Manage Donation Area</a>
+                </div>
+            </li>
+            <li><a href="{% url 'dpwdchange' %}"><i class="fas fa-key"></i><span class="links_name">Change
+                        Password</span></a></li>
+            <li><a href="{% url 'adlogout' %}"><i class="fas fa-sign-out-alt"></i><span
+                        class="links_name">Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main_content">
+        {% if messages %}
+        <div class="mt-2">
+            {% for message in messages %}
+            {% if message.tags == "error" %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% else %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block main %}{% endblock %}
+    </div>
+
+    <script src="{% static 'js/admin.js' %}"></script>
+</body>
+
+</html>

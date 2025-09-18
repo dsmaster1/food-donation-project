@@ -1,0 +1,82 @@
+/* Base Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    color: #495057;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Profile Picture */
+.profile-pic-label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.profile-pic-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: none;
+    margin: 10px auto;
+    border: 2px solid #dee2e6;
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .form-section {
+        padding-bottom: 1rem;
+    }
+}

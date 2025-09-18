@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ 
+<section class="auth-section d-flex justify-content-center align-items-center py-5" style="min-height: 80vh;">
+    <div class="auth-container bg-white p-4 p-md-5 rounded shadow-sm" style="max-width: 420px; width: 100%;">
+        
+        <h2 class="auth-title fw-bold text-center mb-2" style="color: #111827;">Staff Login</h2>
+        <p class="auth-subtitle text-center mb-4" style="color: #6b7280;">Please enter your email and password to continue</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="typeUsernameX" class="form-label fw-semibold">Username</label>
+                <input type="username" id="typeUsernameX" name="username" class="form-control" placeholder="Enter your username" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="typePasswordX" class="form-label fw-semibold">Password</label>
+                <input type="password" id="typePasswordX" name="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="btn w-100 fw-semibold text-white" style="background-color: #3b82f6; border-radius: 8px;">Login</button>
+        </form>
+
+        <p class="text-center mt-3 mb-0" style="font-size: 0.9rem; color: #6b7280;">
+            Don't have an account? <a href="{% url 'sregister' %}" style="color: #3b82f6; text-decoration: none; font-weight: 500;">Sign Up</a>
+        </p>
+    </div>
+</section>
+
+<style>
+    .auth-section {
+        background-color: #f8f9fa;
+    }
+    .auth-container input:focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+    }
+    .auth-container button:hover {
+        background-color: #2563eb !important;
+    }
+    .auth-container a:hover {
+        text-decoration: underline;
+    }
+</style>
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  var toastList = toastElList.map(function(toastEl) {
+    return new bootstrap.Toast(toastEl, { delay: 5000 }) 
+  })
+  toastList.forEach(toast => toast.show())
+})
+</script>
+{% endblock %}

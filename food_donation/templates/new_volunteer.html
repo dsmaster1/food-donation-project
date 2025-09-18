@@ -1,0 +1,38 @@
+{% extends 'base-db-admin.html' %}
+{% load static %}
+{% block main %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+{% endblock extra_css %}
+
+<div class="container mt-5 vh-100 table-responsive">
+    <h3>New Volunteer</h3>
+    <hr>
+    <table id="mytable" class="table data">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th>Volunteer Name</th>
+                <th>Email ID</th>
+                <th>Contact</th>
+                <th>Reg. Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+        </thead>
+        <tbody>
+            {% for vol in volunteer %}
+            <tr class="text-center">
+                <td>{{forloop.counter}}</td>
+                <td>{{vol.user.first_name}} {{vol.user.last_name}}</td>
+                <td>{{vol.user.email}}</td>
+                <td>{{vol.contact}}</td>
+                <td>{{vol.join_date}}</td>
+                <td>{{vol.status}}</td>
+                <td><a href="{% url 'view_volunteerdetail' vol.id %}">View Details</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+{% endblock main %}

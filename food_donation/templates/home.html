@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if messages %}
+  <div class="mt-2">
+    {% for message in messages %}
+      {% if message.tags == "error" %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% else %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="hero text-center py-5 bg-light rounded shadow-sm">
+    <h1 class="display-4 fw-bold text-dark">Welcome to FoodShare</h1>
+    <p class="lead text-muted">Connecting donors with people in need — making every meal count.</p>
+    <div class="mt-4">
+        <a href="{% url 'uregister' %}" class="btn btn-dark">Become a Donor</a> 
+    </div>
+</div>
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                    <div class="mb-3 text-dark fs-2">🍲</div>
+                    <h4 class="fw-semibold text-dark">Donate Food</h4>
+                    <p class="text-muted mb-0">Help reduce food waste and feed the hungry by donating excess food.</p>
+                </div>
+            </div>
+
+           
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                    <div class="mb-3 text-dark fs-2">🤝</div>
+                    <h4 class="fw-semibold text-dark">Find Help</h4>
+                    <p class="text-muted mb-0">If you or someone you know needs food assistance, our staff can connect you.</p>
+                </div>
+            </div>
+
+           
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                    <div class="mb-3 text-dark fs-2">📊</div>
+                    <h4 class="fw-semibold text-dark">Track Donations</h4>
+                    <p class="text-muted mb-0">Registered users can track the status of their donations in real-time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function (alert) {
+      setTimeout(() => {
+        alert.classList.remove("show");
+        alert.classList.add("fade");
+        setTimeout(() => alert.remove(), 500);
+      }, 3000); 
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,171 @@
+/* Base Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Card Styles */
+.registration-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 30px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    text-align: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card-header p {
+    margin: 10px 0 0;
+    opacity: 0.9;
+}
+
+/* Form Styles */
+form {
+    padding: 30px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-title {
+    color: #2575fc;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2575fc;
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* File Upload Styles */
+.file-upload-wrapper {
+    position: relative;
+    margin-top: 10px;
+}
+
+.preview-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: none;
+    margin-bottom: 15px;
+    border: 3px solid #eee;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    background: #f8f9fa;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+}
+
+/* Button Styles */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+/* Footer Link */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.login-link a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .registration-card {
+        border-radius: 0;
+    }
+    
+    .card-header {
+        padding: 20px;
+    }
+    
+    form {
+        padding: 20px;
+    }
+}

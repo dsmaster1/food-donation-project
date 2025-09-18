@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/staffdash.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
+
+</head>
+
+<body>
+    <div class="d-flex vh-100">
+
+        <nav id="sidebar" class="d-flex flex-column p-3 shadow">
+            <div class="profile text-center mb-4">
+                {% if request.user.staffprofile.profilepic %}
+                <img src="{{ request.user.staffprofile.profilepic.url }}" alt="Profile Picture" class="profile-pic">
+                {% else %}
+                <img src="{% static 'images/default_profile.jpg' %}" alt="Default Picture" class="profile-pic">
+                {% endif %}
+                <div class="name_job mt-2">
+                    <div class="name fw-bold">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                    <div class="email text-white small">{{ request.user.email }}</div>
+                </div>
+            </div>
+
+            <h3 class="mb-3 text-white text-center">Staff Dashboard</h3>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="{% url 'staffdash' %}" class="nav-link"><i class="fa fa-home me-2"></i> Dashboard</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" class="fa-clock" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-clock me-2"></i>
+                        Donation History
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a href="{% url 'pendingdonation_staff' %}" class="dropdown-item">New Donation Request</a>
+                        </li>
+                        <li><a href="{% url 'accepteddonation_staff' %}" class="dropdown-item">Accepted Donation</a>
+                        </li>
+                        <li><a href="{% url 'rejecteddonation_staff' %}" class="dropdown-item">Rejected Donation</a>
+                        </li>
+                        <li><a href="{% url 'alldonation_staff' %}" class="dropdown-item">All Donations</a></li>
+                        <li><a class="dropdown-item" href="{% url 'donreceived'%}">Donation Received</a></li>
+                        <li><a class="dropdown-item" href="{% url 'donnorec'%}">Donation Not Received</a></li>
+                        <li><a class="dropdown-item" href="{% url 'donatedstaff'%}">Donation Given</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'staffprofile' %}" class="nav-link"><i class="bi bi-person me-2"></i> Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'dpwdchange' %}" class="nav-link"><i class="fa fa-gear me-2"></i> Change
+                        Password</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-sign-out-alt me-2"></i> Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="home_content flex-grow-1 p-4 ">
+            {% if messages %}
+            <div class="mt-2">
+                {% for message in messages %}
+                {% if message.tags == "error" %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                {% else %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% block main %}{% endblock main %}
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

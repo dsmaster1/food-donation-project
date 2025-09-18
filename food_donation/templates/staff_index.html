@@ -1,0 +1,69 @@
+{% extends 'staff_base.html' %}
+{% block title %}Staff Dashboard - Home{% endblock title %}
+
+{% block main %}
+<div class="container-fluid">
+    <div class="row g-4">
+        <div class="col-lg-6 col-md-6">
+            <div class="card text-center shadow border-0">
+                <div class="card-header classy-green">
+                    <h4>All Donations</h4>
+                </div>
+                <div class="card-body">
+                    <i class="fa fa-box-open fa-3x text-success"></i>
+                    <h3 class="display-4">{{ totalDonations }}</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'alldonation_staff' %}" class="btn btn-outline-success btn-sm">View Details</a>
+                </div>
+            </div>
+        </div>
+         <div class="col-lg-6 col-md-6">
+            <div class="card text-center shadow border-0">
+                <div class="card-header classy-blue">
+                    <h4>Accepted Donations</h4>
+                </div>
+                <div class="card-body">
+                    <i class="fa fa-list fa-3x text-primary"></i>
+                    <h3 class="display-4">{{ acceptedDonations }}</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'accepteddonation_staff' %}" class="btn btn-outline-primary btn-sm">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+        <div class="col-lg-6 col-md-6">
+            <div class="card text-center shadow border-0">
+                <div class="card-header classy-gold">
+                    <h4>Pending Donations</h4>
+                </div>
+                <div class="card-body">
+                    <i class="fa fa-clock fa-3x text-warning"></i>
+                    <h3 class="display-4">{{ pendingDonations }}</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'pendingdonation_staff' %}" class="btn btn-outline-warning btn-sm">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="card text-center shadow border-0">
+                <div class="card-header classy-purple">
+                    <h4>Donations Given</h4>
+                </div>
+                <div class="card-body">
+                    <i class="fa fa-hand-holding-heart fa-3x text-info"></i>
+                    <h3 class="display-4">{{ totalDonationGiven }}</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'donatedstaff' %}" class="btn btn-outline-info btn-sm">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,119 @@
+{% extends 'staff_base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/accpt_donationdetail.css' %}">
+{% endblock extra_css %}
+
+{% block main %}
+<div class="container mt-5">
+  <h3>View Accepted Donation Detail</h3>
+  <hr>
+
+  <div class="table-responsive">
+    <table id="mytable" class="table data">
+      <tbody>
+
+        <tr class="align-middle text-center">
+          <th colspan="4"><h3>Donor Details</h3></th>
+        </tr>
+        <tr class="align-middle text-center">
+          <td><h5>Donor Name :</h5></td>
+          <td><h5 class="text-secondary">{{ donation.donor.user.first_name }} {{ donation.donor.user.last_name }}</h5></td>
+          <td><h5>Donor Contact :</h5></td>
+          <td><h5 class="text-secondary">{{ donation.donor.contact }}</h5></td>
+        </tr>
+        <tr class="align-middle text-center">
+          <td><h5>Email :</h5></td>
+          <td><h5 class="text-secondary">{{ donation.donor.user.email }}</h5></td>
+          <td><h5>Donor Pic :</h5></td>
+          <td>
+            {% if donation.donor.profilepic and donation.donor.profilepic.url %}
+              <img src="{{ donation.donor.profilepic.url }}" width="80" height="80" alt="Profile Picture" />
+            {% else %}
+              <img src="{% static 'images/defaultprofile.webp' %}" width="80" height="80" alt="Default Profile" />
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr class="align-middle text-center">
+          <th colspan="4"><h3>Donation Details</h3></th>
+        </tr>
+        <tr class="align-middle text-center">
+          <td><h5>Donation Name :</h5></td>
+          <td><h5 class="text-secondary">{{ donation.item_name }}</h5></td>
+          <td><h5>Donation Pic :</h5></td>
+          <td>
+            {% if donation.item_pic and donation.item_pic.url %}
+              <img src="{{ donation.item_pic.url }}" width="80" height="80" alt="Donation Item" />
+            {% else %}
+              <img src="{% static 'images/defaultfood.png' %}" width="80" height="80" alt="Default Donation" />
+            {% endif %}
+          </td>
+        </tr>
+        <tr class="align-middle text-center">
+          <td><h5>Location :</h5></td>
+          <td><h5 class="text-secondary">{{ donation.location }}</h5></td>
+          <td><h5>Donation Date :</h5></td>
+          <td><h5 class="text-secondary">{{ donation.donation_date }}</h5></td>
+        </tr>
+        <tr>
+            <td>Item Description :</td>
+            <td colspan="3">{{donation.description}}</td>
+          </tr>
+        <tr class="align-middle text-center">
+          <td><h5>Status :</h5></td>
+          <td>
+ 
+            <span class="status-pill status-pending">{{donation.status}}</span>
+          </td>
+          <td><h5>Updation Date :</h5></td>
+          <td><h5 class="text-secondary">{{ donation.last_update }}</h5></td>
+        </tr>
+        <tr class="align-middle text-center">
+          <td><h5>Admin Remark :</h5></td>
+          <td colspan="3"><h5 class="text-secondary">{{ donation.admin_remark }}</h5></td>
+        </tr>
+        <tr class="align-middle text-center">
+          <td><h5>Donation Area :</h5></td>
+          <td colspan="3"><h5 class="text-secondary">{{ donation.location.name }}</h5></td>
+        </tr>
+
+        
+        {% if donation.reached_location and donation.status == 'accept' %}
+        <form method="post">
+          {% csrf_token %}
+          <tr class="align-middle text-center">
+            <td><h5>Donation Received ?</h5></td>
+            <td colspan="3">
+              <h5 class="text-secondary">
+                <input type="radio" name="status" value="Donation Received" required> Donation Received
+                <input type="radio" name="status" value="Donation NotReceived" required> Donation Not Received
+              </h5>
+            </td>
+          </tr>
+          <tr class="align-middle text-center">
+            <td><h5>Staff Remark :</h5></td>
+            <td colspan="3">
+              <textarea class="form-control" name="staffremark" rows="3"></textarea>
+            </td>
+          </tr>
+          <tr class="align-middle text-center">
+            <td></td>
+            <td colspan="3">
+              <button type="submit" class="btn btn-primary px-5">Submit</button>
+            </td>
+          </tr>
+        </form>
+    
+        {% else %}
+        <tr class="align-middle text-center">
+          <td><h5>Staff Remark :</h5></td>
+          <td colspan="3"><h5 class="text-secondary">Not Updated Yet</h5></td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,174 @@
+{% extends 'staff_base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="container mt-5 vh-100 ">
+    <h3>My Profile</h3>
+    <hr>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="col-sm-6 p-2">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="first_name" class="form-control" pattern="[A-Za-z]+"
+                        value="{{ staff.user.first_name }}" required>
+                    {% if user_form.first_name.errors %}
+                    <div class="text-danger">
+                        {% for error in user_form.first_name.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-6 p-2">
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" class="form-control" pattern="[A-Za-z]+"
+                        value="{{ staff.user.last_name }}" required>
+                    {% if user_form.last_name.errors %}
+                    <div class="text-danger">
+                        {% for error in user_form.last_name.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-6 p-2">
+                <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="email" name="email" readonly class="form-control" value="{{ staff.user.email }}">
+                </div>
+            </div>
+
+            <div class="col-sm-6 p-2">
+                <div class="form-group">
+                    <label>Contact</label>
+                    <input type="text" name="contact" class="form-control" value="{{ staff.contact }}" required>
+                    {% if staff_form.contact.errors %}
+                    <div class="text-danger">
+                        {% for error in staff_form.contact.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-6 p-2">
+                <div class="form-group">
+                    <label>Profile Picture</label>
+                    <input type="file" name="profilepic" class="form-control">
+                    {% if staff_form.profilepic.errors %}
+                    <div class="text-danger">
+                        {% for error in staff_form.profilepic.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-6 p-2 text-center">
+                {% if staff.profilepic %}
+                <img src="{{ staff.profilepic.url }}" width="100" height="100" class="img-thumbnail">
+                {% else %}
+                <img src="{% static 'images/default_profile.jpg' %}" width="100" height="100" class="img-thumbnail">
+                {% endif %}
+            </div>
+
+            <div class="col-sm-6 p-2">
+                <div class="form-group">
+                    <label>ID Proof PIC (Aadhar, Voter ID, PAN, etc.)</label>
+                    <input type="file" name="idpic" class="form-control">
+                    {% if staff_form.idpic.errors %}
+                    <div class="text-danger">
+                        {% for error in staff_form.idpic.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-6 p-2 text-center">
+                {% if staff.idpic %}
+                <img src="{{ staff.idpic.url }}" width="100" height="100" class="img-thumbnail">
+                {% else %}
+                <img src="{% static 'images/default_id.png' %}" width="100" height="100" class="img-thumbnail">
+                {% endif %}
+            </div>
+
+            <div class="col-sm-12 p-2">
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea name="address" class="form-control"
+                        placeholder="Full Address">{{ staff.address }}</textarea>
+                    {% if staff_form.address.errors %}
+                    <div class="text-danger">
+                        {% for error in staff_form.address.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-12 p-2">
+                <div class="form-group">
+                    <label>About Yourself</label>
+                    <textarea name="about" class="form-control"
+                        placeholder="About ">{{ staff.about }}</textarea>
+                    {% if staff_form.about.errors %}
+                    <div class="text-danger">
+                        {% for error in staff_form.about.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-12 p-2">
+                <input type="submit" value="Update Profile" class="m-2 px-3 btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .alert {
+        margin-bottom: 20px;
+    }
+
+    .img-thumbnail {
+        object-fit: cover;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+</style>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            var alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function (alert) {
+                var bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+    });
+</script>
+{% endblock main %}

@@ -1,0 +1,35 @@
+{% extends 'base-db-admin.html' %}
+{% load static %}
+{% block main %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/addarea.css' %}">
+{% endblock extra_css %}
+<div class="container mt-5 vh-100">
+    <div class="form-container">
+        <h3> Add Donation Area</h3>
+        <hr>
+        
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="id_areaname">Donation Area Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="form-error">{{ form.name.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="id_description">Description</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <div class="form-error">{{ form.description.errors }}</div>
+                {% endif %}
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+{% endblock main %}

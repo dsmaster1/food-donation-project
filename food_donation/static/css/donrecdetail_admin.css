@@ -1,0 +1,122 @@
+/* Container */
+.container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Section Headings */
+.section-title {
+  background: #2c3e50;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  margin-bottom: 0;
+  border: 1px solid #e0e0e0;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  padding: 12px;
+}
+
+.detail-label {
+  font-weight: 600;
+  background: #f8f9fa;
+  width: 20%;
+}
+
+.detail-value {
+  color: #333;
+}
+
+/* Profile & Item Images */
+.table img {
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+/* Status Pills */
+.status-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 25px;
+}
+
+.status-received {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.status-given {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #1565c0;
+}
+
+.status-pending {
+  background: #fff3e0;
+  color: #e65100;
+  border: 1px solid #e65100;
+}
+
+/* No Booking */
+.no-booking {
+  font-style: italic;
+  color: #888;
+  padding: 15px;
+}
+
+/* Update Status Card */
+.update-status-card {
+  background: #f9fafc;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.update-status-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #063360;
+  margin-bottom: 20px;
+}
+
+/* Radio Buttons */
+.form-check-input {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.form-check-label {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Button */
+.btn-primary {
+  background: #04AA6D;
+  border: none;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #045099;
+}

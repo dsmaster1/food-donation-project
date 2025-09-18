@@ -1,0 +1,171 @@
+{% extends 'staff_base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/donation-detail.css' %}">
+{% endblock extra_css %}
+
+{% block main %}
+<div class="container mt-5">
+  <h3 class="page-title">View Donation Detail</h3>
+  <hr>
+
+  <div class="table-responsive">
+    {% if donation.status == 'pending' %}
+    <form method="post">
+      {% csrf_token %}
+      <table class="table donation-table">
+        <tbody>
+
+          <tr class="section-header">
+            <th colspan="4">Donor Details</th>
+          </tr>
+          <tr>
+            <td>Donor Name</td>
+            <td class="text-muted">{{ donation.donor.user.first_name }} {{ donation.donor.user.last_name }}</td>
+            <td>Donor Contact</td>
+            <td class="text-muted">{{ donation.donor.contact }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td class="text-muted">{{ donation.donor.user.email }}</td>
+            <td>Donor Pic</td>
+            <td>
+              {% if donation.donor.profilepic %}
+              <img src="{{ donation.donor.profilepic.url }}" width="80" height="80"
+                alt="{{ donation.donor.user.first_name }}'s profile picture" />
+              {% else %}
+              <img src="{% static 'images/defaultprofile.webp' %}" width="80" height="80"
+                alt="Default profile picture" />
+              {% endif %}
+            </td>
+          </tr>
+
+          <tr class="section-header">
+            <th colspan="4">Donation Details</th>
+          </tr>
+          <tr>
+            <td>Item Name</td>
+            <td class="text-muted">{{ donation.item_name }}</td>
+            <td>Donation Pic</td>
+            <td>
+              {% if donation.item_pic %}
+              <img src="{{ donation.item_pic.url }}" width="80" height="80"
+                alt="Donation item: {{ donation.item_name }}" />
+              {% else %}
+              <img src="{% static 'images/defaultfood.png' %}" width="80" height="80" alt="Default donation item" />
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>Item Description :</td>
+            <td colspan="3">{{donation.description}}</td>
+          </tr>
+          <tr>
+            <td>Donation Location</td>
+            <td class="text-muted">{{ donation.location }}</td>
+            <td>Donation Date</td>
+            <td class="text-muted">{{ donation.donation_date }}</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td colspan="3">
+              <div class="styled-select">
+                <select name="status" required>
+                  <option disabled selected>Select Status</option>
+                  <option value="accept">✅ Accept</option>
+                  <option value="reject">❌ Reject</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+
+          <td>Staff Remark</td>
+          <td colspan="3">
+            <textarea class="form-control" name="staff_remark" rows="3"></textarea>
+          </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="3">
+              <button type="submit" class="btn btn-primary px-5">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    {% else %}
+    <table class="table donation-table">
+      <tbody>
+        <tr class="section-header">
+          <th colspan="4">Donor Details</th>
+        </tr>
+        <tr>
+          <td>Donor Name</td>
+          <td class="text-muted">{{ donation.donor.user.first_name }} {{ donation.donor.user.last_name }}</td>
+          <td>Donor Contact</td>
+          <td class="text-muted">{{ donation.donor.contact }}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td class="text-muted">{{ donation.donor.user.email }}</td>
+          <td>Donor Pic</td>
+          <td>
+            {% if donation.donor.profilepic %}
+            <img src="{{ donation.donor.profilepic.url }}" width="80" height="80"
+              alt="{{ donation.donor.user.first_name }}'s profile picture" />
+            {% else %}
+            <img src="{% static 'images/defaultprofile.webp' %}" width="80" height="80" alt="Default profile picture" />
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr class="section-header">
+          <th colspan="4">Donation Details</th>
+        </tr>
+        <tr>
+          <td>Item Name</td>
+          <td class="text-muted">{{ donation.item_name }}</td>
+          <td>Donation Pic</td>
+          <td>
+            {% if donation.item_pic %}
+            <img src="{{ donation.item_pic.url }}" width="80" height="80"
+              alt="Donation item: {{ donation.item_name }}" />
+            {% else %}
+            <img src="{% static 'images/defaultfood.png' %}" width="80" height="80" alt="Default donation item" />
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+            <td>Item Description :</td>
+            <td colspan="3">{{donation.description}}</td>
+          </tr>
+        <tr>
+          <td>Donation Location</td>
+          <td class="text-muted">{{ donation.location }}</td>
+          <td>Donation Date</td>
+          <td class="text-muted">{{ donation.donation_date }}</td>
+        </tr>
+
+        <tr class="section-header">
+          <th colspan="4">History</th>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td
+            class="{% if donation.status == 'accepted' %}text-success{% elif donation.status == 'rejected' %}text-danger{% else %}text-warning{% endif %}">
+            {{ donation.status }}
+          </td>
+          <td>Updation Date</td>
+          <td class="text-muted">{{ donation.last_update }}</td>
+        </tr>
+        <tr>
+          <td>Staff Remark</td>
+          <td colspan="3" class="text-muted">{{ donation.staff_remark }}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</div>
+{% endblock main %}

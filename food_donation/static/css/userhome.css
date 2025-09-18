@@ -1,0 +1,138 @@
+/* General Reset */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafb;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: #063360;
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Listings Section */
+#listings h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #063360;
+}
+
+.listings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Card */
+.card {
+  width: 220px;
+  min-height: 280px;   
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image inside card */
+.item-pic {
+  width: 100%;
+  height: 150px;
+  object-fit: cover; 
+  border-bottom: 1px solid #eee;
+}
+
+/* Card body */
+.card-body {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.card-body h3 {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #063360;
+}
+
+.description {
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.location {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+  background: #063360;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #045099;
+}
+
+/* Booked text */
+.booked {
+  color: #c62828;
+  font-weight: bold;
+}
+
+/* Empty message */
+.empty-msg {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+}

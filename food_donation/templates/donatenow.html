@@ -1,0 +1,79 @@
+{% extends 'base-db-donor.html' %}
+{% block extra_css %}
+<style>
+    .donate-card {
+        max-width: 600px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        background: #ffffff;
+    }
+    .donate-card-header {
+        border-radius: 20px 20px 0 0;
+        background: linear-gradient(135deg, #007bff, #00a8ff);
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+    .donate-card-header h2 {
+        margin: 0;
+        font-weight: 600;
+    }
+    .form-control {
+        border-radius: 12px;
+        padding: 12px;
+    }
+    .btn-submit {
+        width: 100%;
+        border-radius: 12px;
+        padding: 12px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #007bff, #00a8ff);
+        border: none;
+        color: white;
+        transition: 0.3s;
+    }
+    .btn-submit:hover {
+        background: linear-gradient(135deg, #0056b3, #007bbf);
+    }
+    .messages {
+        max-width: 600px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+
+<div class="container my-5">
+
+    
+    <div class="donate-card mx-auto">
+        <div class="donate-card-header">
+            <h2>Donate Food</h2>
+            <p class="mb-0">Help someone in need by donating food</p>
+        </div>
+        <div class="card-body p-4">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.item_name.label_tag }}
+                    {{ form.item_name }}
+                </div>
+                <div class="mb-3">
+                    {{ form.location.label_tag }}
+                    {{ form.location }}
+                </div>
+                <div class="mb-3">
+                    {{ form.description.label_tag }}
+                    {{ form.description }}
+                </div>
+                <div class="mb-3">
+                    {{ form.item_pic.label_tag }}
+                    {{ form.item_pic }}
+                </div>
+                <button type="submit" class="btn-submit">Submit Donation</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}

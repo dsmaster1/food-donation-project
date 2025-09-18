@@ -1,0 +1,66 @@
+.container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center the table */
+#mytable {
+    width: 70%;  /* shrink table width */
+    max-width: 800px;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    margin: 0 auto; /* center horizontally */
+    text-align: center;
+}
+
+/* Header row */
+#mytable th[colspan="4"] {
+    background: #0079ff;
+    border-radius: 10px;
+    color: #0d6efd;
+    letter-spacing: 1px;
+    padding: 12px;
+}
+
+/* Labels (Donor Name, Contact, etc.) */
+#mytable td h5 {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Values (grey text) */
+#mytable td h5.text-secondary {
+    font-weight: 500;
+}
+
+/* Donor Image */
+#mytable img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease;
+}
+#mytable img:hover {
+    transform: scale(1.1);
+}
+
+/* Delete link styled like button */
+#mytable a.text-primary {
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #0d6efd;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+#mytable a.text-primary:hover {
+    background: #0d6efd;
+    color: white !important;
+} 

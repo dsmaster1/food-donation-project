@@ -1,0 +1,93 @@
+/* form-styles.css */
+
+/* Container */
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+.form-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Labels */
+.form-container label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+/* Inputs */
+.form-container input[type="text"],
+.form-container textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-container input[type="text"]:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Error messages */
+.form-error {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Submit button */
+.form-container button,
+.form-container input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #007bff;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 15px;
+}
+
+.form-container button:hover,
+.form-container input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Success/Warning/Error alerts */
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+}

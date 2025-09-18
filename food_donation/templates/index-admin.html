@@ -1,0 +1,84 @@
+{% extends 'base-db-admin.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Admin{% endblock %}
+
+{% block main %}
+<div class="home_content">
+    <div class="header">
+        <h1>Dashboard Overview</h1>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="card">
+                    <div class="card-header bg-primary text-white"><h3>Total Donor</h3></div>
+                    <div class="card-content">
+                        <i class="fas fa-list text-primary"></i>
+                        <h3 class="display-3">{{totaldonors}}</h3>
+                    </div>
+                    <div class="card-footer"><a href="{% url 'managedonor' %}">View Details</a></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-success text-white"><h3>Total Volunteer</h3></div>
+                    <div class="card-content">
+                        <i class="fas fa-hands-helping text-success"></i>
+                        <h3 class="display-3">{{totalvolunteers}}</h3>
+                    </div>
+                    <div class="card-footer"><a href="{% url 'accvolunteer'%}">View Details</a></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-danger text-white"><h3>Total Donation</h3></div>
+                    <div class="card-content">
+                        <i class="fas fa-donate text-danger"></i>
+                        <h3 class="display-3">{{totaldonations}}</h3>
+                    </div>
+                    <div class="card-footer"><a href="{% url 'alldonations'%}">View Details</a></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-secondary text-white"><h3>Donation Areas</h3></div>
+                    <div class="card-content">
+                        <i class="fas fa-map-marker-alt text-secondary"></i>
+                        <h3 class="display-3">{{totaldonationareas}}</h3>
+                    </div>
+                    <div class="card-footer"><a href="{% url 'managearea' %}">View Details</a></div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white"><h3>Total New Donation Request</h3></div>
+                    <div class="card-content">
+                        <i class="fas fa-plus-circle text-info"></i>
+                        <h3 class="display-3">{{totalpendingdonations}}</h3>
+                    </div>
+                    <div class="card-footer"><a href="{% url 'pendingdonation' %}">View Details</a></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-warning text-white"><h3>Total Accepted Donation</h3></div>
+                    <div class="card-content">
+                        <i class="fas fa-check-circle text-warning"></i>
+                        <h3 class="display-3">{{totalaccepteddonations}}</h3>
+                    </div>
+                    <div class="card-footer"><a href="{% url 'accepteddonation' %}">View Details</a></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-success text-white"><h3>Total Donation Given</h3></div>
+                    <div class="card-content">
+                        <i class="fas fa-hand-holding-heart text-success"></i>
+                        <h3 class="display-3">{{totalgiven}}</h3>
+                    </div>
+                    <div class="card-footer"><a href="{% url 'donationgivenad' %}">View Details</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

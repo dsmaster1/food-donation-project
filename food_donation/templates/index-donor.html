@@ -1,0 +1,78 @@
+{% extends 'base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container mt-5">
+  <div class="row g-4">
+    <div class="col-lg-4 col-md-6">
+      <div class="stat-card">
+        <div class="stat-icon bg-primary text-white"><i class="fa fa-list"></i></div>
+        <div class="stat-info">
+          <h5>My Total Donations</h5>
+          <h2>{{donation_count}}</h2>
+          <a href="{% url 'donhistory' %}">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="stat-card">
+        <div class="stat-icon bg-success text-white"><i class="fa fa-snowflake"></i></div>
+        <div class="stat-info">
+          <h5>My Accepted Donations</h5>
+          <h2>{{accepted_count}}</h2>
+          <a href="{% url 'accepteddonation_donor' %}">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="stat-card">
+        <div class="stat-icon bg-danger text-white"><i class="fa fa-arrows"></i></div>
+        <div class="stat-info">
+          <h5>My Rejected Donations</h5>
+          <h2>{{rejected_count}}</h2>
+          <a href="{% url 'rejecteddonation_donor' %}">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="stat-card">
+        <div class="stat-icon bg-warning text-white"><i class="fa fa-exchange"></i></div>
+        <div class="stat-info">
+          <h5>My Pending Donations</h5>
+          <h2>{{pending_count}}</h2>
+          <a href="{% url 'pendingdonation_donor' %}">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="stat-card">
+        <div class="stat-icon bg-secondary text-white"><i class="fa-solid fa-bahai"></i></div>
+        <div class="stat-info">
+          <h5>My Successfully Given Donations</h5>
+          <h2>{{given_count}}</h2>
+          <a href="{% url 'donationgiven_donor' %}">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function (alert) {
+      setTimeout(() => {
+        
+        alert.classList.remove("show");
+        alert.classList.add("fade");
+        
+        setTimeout(() => alert.remove(), 500);
+      }, 3000); 
+    });
+  });
+</script>
+{% endblock main %}

@@ -1,0 +1,103 @@
+/* Container Styling */
+.container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.table th, .table td {
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+/* Table Header */
+.table th {
+    background: #063360;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
+
+/* Section Title Row */
+.table tr:first-child th h3 {
+    margin: 0;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* Text Colors */
+h5 {
+    margin: 0;
+    font-weight: 600;
+    color: #063360;
+}
+
+.text-secondary {
+    color: #6c757d !important;
+    font-weight: 500;
+}
+
+/* Image Styling */
+.img-thumbnail {
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* Form Elements */
+.form-control, textarea {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus, textarea:focus {
+    border-color: #063360;
+    outline: none;
+    box-shadow: 0 0 5px rgba(6, 51, 96, 0.3);
+}
+
+/* Button Styling */
+.btn-primary {
+    background: #063360;
+    color: #fffcfc;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #04509d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table td, .table th {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,131 @@
+{% extends 'base-db-admin.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/donrecdetail_admin.css' %}">
+
+{% endblock extra_css %}
+
+{% block main %}
+<div class="container mt-5 table-responsive">
+  <h3 class="mb-3">View Accepted Donation Detail</h3>
+  <hr>
+
+  <table id="mytable" class="table table-bordered">
+    <tbody>
+
+      <tr>
+        <th colspan="4" class="text-center section-title">Donor Details</th>
+      </tr>
+      <tr>
+        <td class="detail-label">Name</td>
+        <td class="detail-value">{{ donation.donor.user.first_name }} {{ donation.donor.user.last_name }}</td>
+        <td class="detail-label">Contact</td>
+        <td class="detail-value">{{ donation.donor.contact }}</td>
+      </tr>
+      <tr>
+        <td class="detail-label">Email</td>
+        <td class="detail-value">{{ donation.donor.user.email }}</td>
+        <td class="detail-label">Picture</td>
+        <td>
+          {% if donation.donor.profilepic %}
+          <img src="{{ donation.donor.profilepic.url }}" class="rounded" width="80" height="80" alt="Profile Picture" />
+          {% else %}
+          <img src="{% static 'images/defaultprofile.webp' %}" class="rounded" width="80" height="80"
+            alt="Default Profile" />
+          {% endif %}
+        </td>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="text-center section-title">Donation Details</th>
+      </tr>
+      <tr>
+        <td class="detail-label">Item</td>
+        <td class="detail-value">{{ donation.item_name }}</td>
+        <td class="detail-label">Picture</td>
+        <td>
+          {% if donation.item_pic %}
+          <img src="{{ donation.item_pic.url }}" class="rounded" width="80" height="80" alt="Donation Item" />
+          {% else %}
+          <img src="{% static 'images/defaultfood.png' %}" class="rounded" width="80" height="80"
+            alt="Default Donation" />
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+            <td>Item Description :</td>
+            <td colspan="3">{{donation.description}}</td>
+          </tr>
+      <tr>
+        <td class="detail-label">Location</td>
+        <td class="detail-value">{{ donation.location }}</td>
+        <td class="detail-label">Donation Date</td>
+        <td class="detail-value">{{ donation.donation_date }}</td>
+      </tr>
+      <tr>
+        <td class="detail-label">Status</td>
+        <td>
+          <span class="status-pill 
+            {% if donation.status == 'Donation Received' %}status-received
+            {% elif donation.status == 'Donation Given' %}status-given
+            {% else %}status-pending{% endif %}">
+            {{ donation.status }}
+          </span>
+        </td>
+        <td class="detail-label">Last Update</td>
+        <td class="detail-value">{{ donation.last_update }}</td>
+      </tr>
+      <tr>
+        <td class="detail-label">Admin Remark</td>
+        <td colspan="3" class="detail-value">{{ donation.admin_remark }}</td>
+      </tr>
+      <tr>
+        <td class="detail-label">Donation Area</td>
+        <td colspan="3" class="detail-value">{{ donation.location.name }}</td>
+      </tr>
+      <tr>
+        <td class="detail-label">Volunteer Remark</td>
+        <td colspan="3" class="detail-value">{{ donation.staffremark }}</td>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="text-center section-title">Booking Details</th>
+      </tr>
+      {% if booking %}
+      <tr>
+        <td class="detail-label">Booked By</td>
+        <td class="detail-value">{{ booking.booked_by.user.first_name }} {{ booking.booked_by.user.last_name }}</td>
+        <td class="detail-label">Booked At</td>
+        <td class="detail-value">{{ booking.booked_at }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="4" class="text-center no-booking">No donor has booked this donation.</td>
+      </tr>
+      {% endif %}
+
+      {% if donation.status == 'Donation Received' and booking %}
+    </tbody>
+  </table>
+
+  <div class="update-status-card mt-4 p-4">
+    <h4 class="mb-3">Update Donation Status</h4>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-check mb-4 text-start">
+        <input type="radio" id="donationGiven" name="status" value="Donation Given" required class="form-check-input"
+          style="margin-right:8px; transform: scale(1.2);">
+        <label for="donationGiven" class="form-check-label">
+          Donation Given Successfully
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Status</button>
+    </form>
+  </div>
+  {% endif %}
+
+  </tbody>
+  </table>
+</div>
+{% endblock main %}

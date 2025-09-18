@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Donation App</title>
+  <link rel="stylesheet" href="{% static 'css/userhome.css' %}">
+</head>
+
+<body>
+  <header>
+    <h1>Food Donation App</h1>
+    <div class="user-info">
+      <span>Welcome, {{ request.user.first_name }}</span>
+      <a href="{% url 'donorindex' %}">
+        {% if profile.profilepic %}
+        <img src="{{ profile.profilepic.url }}" alt="Profile Picture" class="profile-pic" />
+        {% else %}
+        <img src="{% static 'images/defaultprofile.webp' %}" alt="Default Profile" class="profile-pic" />
+        {% endif %}
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <section id="listings">
+      <h2>Available Donations</h2>
+      <div class="listings">
+        {% for donation in donations %}
+        <div class="card">
+          {% if donation.item_pic %}
+          <img src="{{ donation.item_pic.url }}" alt="{{ donation.item_name }}" class="item-pic">
+          {% else %}
+          <img src="{% static 'images/noimage.png' %}" alt="No Image" class="item-pic">
+          {% endif %}
+
+          <div class="card-body">
+            <h3>{{ donation.item_name }}</h3>
+            <p class="description">{{ donation.description }}</p>
+            <p class="location">📍 {{ donation.location.name }}</p>
+
+            {% if donation.is_booked %}
+            <p class="booked">Already booked</p>
+            {% else %}
+            <form action="{% url 'book_donation' donation.id %}" method="post"
+              onsubmit="return confirm('Are you sure you want to book this donation?');">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">Book Now</button>
+            </form>
+            {% endif %}
+
+
+          </div>
+        </div>
+        {% empty %}
+        <p class="empty-msg">No donations available at the moment.</p>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>

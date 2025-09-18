@@ -1,0 +1,97 @@
+{% extends 'base-db-donor.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/donation-detail.css' %}">
+{% endblock extra_css %}
+
+{% block main %}
+<div class="container mt-5 table-responsive">
+  <h3 class="page-title">View Donation Detail</h3>
+  <hr>
+  <table id="mytable" class="table donation-table">
+    <tbody>
+
+      <tr>
+        <th colspan="4" class="section-title">Donor Details</th>
+      </tr>
+      <tr>
+        <td class="label">Donor Name :</td>
+        <td class="value">{{donation.donor.user.first_name}} {{donation.donor.user.last_name}}</td>
+        <td class="label">Donor Contact :</td>
+        <td class="value">{{donation.donor.contact}}</td>
+      </tr>
+      <tr>
+        <td class="label">Email :</td>
+        <td class="value">{{donation.donor.user.email}}</td>
+        <td class="label">Donor Pic :</td>
+        <td>
+          {% if donation.donor.profilepic and donation.donor.profilepic.url %}
+          <img src="{{donation.donor.profilepic.url}}" class="profile-pic" alt="Profile Picture" />
+          {% else %}
+          <img src="{% static 'images/defaultprofile.webp' %}" class="profile-pic" alt="Default Profile" />
+          {% endif %}
+        </td>
+      </tr>
+
+      <tr>
+        <th colspan="4" class="section-title">Donation Details</th>
+      </tr>
+      <tr>
+        <td class="label">Donation Name :</td>
+        <td class="value">{{donation.item_name}}</td>
+        <td class="label">Donation Pic :</td>
+        <td>
+          {% if donation.item_pic and donation.item_pic.url %}
+          <img src="{{donation.item_pic.url}}" class="donation-pic" alt="Donation Item" />
+          {% else %}
+          <img src="{% static 'images/defaultfood.png' %}" class="donation-pic" alt="Default Donation" />
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+            <td>Item Description :</td>
+            <td colspan="3">{{donation.description}}</td>
+          </tr>
+      <tr>
+        <td class="label">Location :</td>
+        <td class="value">{{donation.location}}</td>
+        <td class="label">Donation Date :</td>
+        <td class="value">{{donation.donation_date}}</td>
+      </tr>
+      <tr>
+        <td class="label">Status :</td>
+        <td>
+          <span class="status-badge">{{donation.status}}</span>
+        </td>
+        <td class="label">Updation Date :</td>
+        <td class="value">{{donation.last_update}}</td>
+      </tr>
+      <tr>
+        <td class="label">Admin Remark :</td>
+        <td colspan="3" class="value">{{donation.admin_remark|default_if_none:""}}</td>
+      </tr>
+      <tr>
+        <td class="label">Volunteer Remark :</td>
+        <td colspan="3" class="value">{{donation.staffremark|default_if_none:""}}</td>
+      </tr>
+
+      <tr>
+        {% if not donation.reached_location and donation.status == "accept" %}
+        <td class="label">Mark as Reached Location :</td>
+        <td colspan="3" class="text-start">
+          <form action="{% url 'mark_reached' donation.id %}" method="post"
+            onsubmit="return confirm('Confirm you have reached the donation center?');">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Reached Location</button>
+          </form>
+          {% elif donation.reached_location %}
+          <p class="text-success fw-bold mb-0">✅ You have reached the donation center</p>
+          {% endif %}
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
+{% endblock main %}

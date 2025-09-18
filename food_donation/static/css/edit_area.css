@@ -1,0 +1,137 @@
+/* Container */
+.edit-area-container {
+    background: linear-gradient(135deg, #f0f9ff, #e6f7ff);
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+/* Card */
+.edit-area-card {
+    border: none;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    padding: 40px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Title & subtitle */
+.edit-area-title {
+    color: #007bff;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+.edit-area-subtitle {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* Messages */
+.edit-area-messages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.edit-area-alert {
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    color: #fff;
+    animation: slideDown 0.4s ease;
+}
+.edit-area-alert-icon {
+    margin-right: 8px;
+}
+
+/* Alert Variants */
+.edit-area-alert-success {
+    background: linear-gradient(90deg, #38d39f, #28a745);
+}
+.edit-area-alert-error,
+.edit-area-alert-danger {
+    background: linear-gradient(90deg, #ff7b7b, #e74c3c);
+}
+.edit-area-alert-warning {
+    background: linear-gradient(90deg, #ffd166, #f39c12);
+    color: #222;
+}
+.edit-area-alert-info {
+    background: linear-gradient(90deg, #6ec1ff, #3498db);
+}
+
+/* Labels */
+.edit-area-label {
+    display: block;
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Inputs */
+.edit-area-input {
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #d1d7e0;
+    width: 70%;
+    max-width: 540px;
+    margin: 0 auto;
+    background: #fdfdfd;
+    text-align: center;
+    transition: 0.25s;
+}
+.edit-area-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 12px rgba(0,123,255,0.15);
+    outline: none;
+}
+
+/* Error text */
+.edit-area-error {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 6px;
+    text-align: center;
+}
+
+/* Button */
+.edit-area-btn {
+    background: linear-gradient(45deg, #007bff, #00bfff);
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 30px;
+    transition: 0.3s;
+    border: none;
+    box-shadow: 0 6px 15px rgba(0,123,255,0.2);
+}
+.edit-area-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #0080ff);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,123,255,0.25);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .edit-area-input { width: 95%; }
+    .edit-area-card { padding: 20px; }
+    .edit-area-alert { width: 100%; }
+}

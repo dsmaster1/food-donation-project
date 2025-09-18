@@ -1,0 +1,137 @@
+/* General Reset */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Flex wrapper for sidebar + content */
+.d-flex {
+    display: flex;
+    height: 100vh; 
+    overflow: hidden; 
+}
+
+/* Sidebar */
+#sidebar {
+    width: 260px;
+    background: #063360;
+    color: #fff;
+    height: 100%; 
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Sidebar nav links */
+#sidebar .nav-link {
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+#sidebar .nav-link:hover {
+    background: #495057;
+    color: #fff;
+}
+
+#sidebar h3 {
+    font-size: 1.4rem;
+    border-bottom: 1px solid #495057;
+    padding-bottom: 10px;
+}
+
+/* Profile Section */
+.profile_content {
+    background: linear-gradient(135deg, #0062E6, #33AEFF);
+    padding: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    border: 3px solid #fff;
+}
+
+.name_job .name {
+    font-size: 1.2rem;
+}
+
+.name_job .email {
+    font-size: 0.9rem;
+}
+
+/* Main content */
+.home_content {
+    flex-grow: 1;
+    padding: 30px;
+    background: #f8f9fa;
+    overflow-y: auto; 
+}
+
+/* Cards */
+.card {
+    border-radius: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    font-weight: bold;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Card Body Icons */
+.card-body i {
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 100px;           
+    height: 100px;          
+    border-radius: 50%;  
+    object-fit: cover;       
+    border: 3px solid #fff;
+    display: block;
+    margin: 0 auto;
+}
+
+/* index style */
+
+.card-header.classy-blue {
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: white;
+    font-weight: 600;
+}
+
+.card-header.classy-green {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+    font-weight: 600;
+}
+
+.card-header.classy-gold {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: white;
+    font-weight: 600;
+}
+
+.card-header.classy-purple {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    font-weight: 600;
+}
