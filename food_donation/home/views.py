@@ -46,7 +46,6 @@ def user_register(request):
     return render(request, 'user_register.html', context)
 
 def staff_register(request):
-
     if request.method == 'POST':
         user_form = UserRegistration(request.POST)
         staff_form = StaffSignupForm(request.POST, request.FILES)
@@ -255,7 +254,7 @@ def changepwd_donor(request):
    
     return render(request, 'changepwd.html', {'form':form})
 
-
+@login_required
 def donate_now(request):
     if request.method == "POST":
         form = DonateNowForm(request.POST, request.FILES)
@@ -321,7 +320,7 @@ def accepteddonation_donor(request):
     
     return render(request, 'accepteddonation_donor.html', context)
 
-login_required(login_url='userlogin')
+@login_required(login_url='userlogin')
 def donationgiven_donor(request):
     donor = Donor.objects.get(user=request.user)
     donations = Donation.objects.filter(donor=donor, status='Donation Given')
@@ -412,6 +411,7 @@ def donationrec_detail(request, pid):
 
     return render(request,'donationrec_detail.html',{'donation': donation,'booking': booking,})
 
+@login_required
 def viewdonationdetail_staff(request, pid):
     donation = get_object_or_404(Donation, id=pid)
 

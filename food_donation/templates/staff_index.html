@@ -2,6 +2,8 @@
 {% block title %}Staff Dashboard - Home{% endblock title %}
 
 {% block main %}
+
+{% if staff.status == "accept" or staff.status == none %}
 <div class="container-fluid">
     <div class="row g-4">
         <div class="col-lg-6 col-md-6">
@@ -66,4 +68,7 @@
         </div>
     </div>
 </div>
+{% else %}
+<h1>Profile Under Verification...</h1>
+{% endif %}
 {% endblock main %}

@@ -1,6 +1,4 @@
-/* form-styles.css */
 
-/* Container */
 .form-container {
     max-width: 600px;
     margin: 20px auto;
@@ -10,14 +8,12 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Headings */
 .form-container h3 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* Labels */
 .form-container label {
     display: block;
     font-weight: 600;
@@ -25,7 +21,6 @@
     color: #444;
 }
 
-/* Inputs */
 .form-container input[type="text"],
 .form-container textarea {
     width: 100%;
@@ -42,14 +37,12 @@
     border-color: #007bff;
 }
 
-/* Error messages */
 .form-error {
     color: #e74c3c;
     font-size: 13px;
     margin-top: 4px;
 }
 
-/* Submit button */
 .form-container button,
 .form-container input[type="submit"] {
     display: inline-block;
@@ -69,7 +62,6 @@
     background: #0056b3;
 }
 
-/* Success/Warning/Error alerts */
 .alert {
     padding: 12px;
     border-radius: 6px;

@@ -29,7 +29,7 @@ def logoutpage(request):
 
 @login_required(login_url='admin_login')
 def admin_dashboard(request):
-    totalvolunteers = StaffProfile.objects.count()
+    totalvolunteers = StaffProfile.objects.filter(status="accept").count()
     totaldonations = Donation.objects.count()
     totaldonors = Donor.objects.count()
     totalpendingdonations = Donation.objects.filter(status="pending").count()
@@ -59,15 +59,17 @@ def new_volunteer(request):
     volunteer = StaffProfile.objects.filter(status='pending')
     return render(request, 'new_volunteer.html', {'volunteer': volunteer})
 
+@login_required(login_url='admin_login')
 def accepted_volunteers(request):
     volunteer = StaffProfile.objects.filter(status='accept')
     return render(request, 'accepted_volunteer.html', {'volunteer': volunteer}) 
 
+@login_required(login_url='admin_login')
 def rejected_volunteers(request):
     volunteer = StaffProfile.objects.filter(status='reject')
     return render(request, 'rejected_volunteer.html', {'volunteer': volunteer}) 
 
-
+@login_required(login_url='admin_login')
 def all_volunteers(request):
     volunteer = StaffProfile.objects.all()
     return render(request, 'all_volunteer.html', {'volunteer': volunteer}) 
